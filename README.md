@@ -1,6 +1,6 @@
 # IFT-7025-tp3 
 
-## Authors
+## Auteurs
 - Lucas Chollet
 - Camille Deflesselle
 
