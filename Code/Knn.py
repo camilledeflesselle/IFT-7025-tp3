@@ -26,8 +26,6 @@ class Knn:
 		self.repeat_kfold = repeat_kfold
 		self.k = k
 
-		
-
 	def euclideanDistance(self, row1, row2):
 		"""
 		calcule la distance euclidienne entre deux instances (ou vecteurs)
