@@ -36,8 +36,10 @@ Pour faciliter notre collaboration, nous avons créé un dépôt git privé, sur
 
 Pour ce projet, l'un des membres de l'équipe a implémenté la classe KNN et l'autre la classe BayesNaif.
 Quant aux fonctions dédiées au chargement des datasets, nous les avons écrit ensemble.
+
 De même, nous avons implémenté une boucle d'entraînement/test (fichier *entrainer_tester.py*) en utilisant ces deux classes sur les trois jeux de données étudiés en travaillant ensemble sur le fichier. Ce fichier nous a permis de connaître les temps d'exécution des différents classifieurs (temps d'entraînement + évaluation sur les données test).
 
+Par ailleurs, nous avions au préalable implémenté le fichier *metrics.py* qui nous permet d'afficher les différentes métriques de performances, que nous utilisons dans nos classes lors de l'évaluation.
 
 ## Explication des difficultés rencontrées dans ce travail
 
