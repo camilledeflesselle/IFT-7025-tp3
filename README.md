@@ -1,4 +1,8 @@
-# IFT-7025-tp3
+# IFT-7025-tp3 
+
+## Authors
+- Lucas Chollet
+- Camille Deflesselle
 
 ## Description des classes
 
