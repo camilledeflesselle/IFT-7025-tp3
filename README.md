@@ -19,8 +19,8 @@ Cette classe est le classifieur implémenté dans le fichier *Knn.py*. Il s'agit
  - **train** : permet d'identifier les données d'entraînement
  - **predict** : permet de prédire la classe d'une instance
  - **evaluate** : permet de stocker toutes les prédictions d'un jeu de données test et d'évaluer les performances de l'algorithme (Accuracy, Précision, Rappel, Score F1 et matrice de confusion)
- - getBestKppv : permet de faire une validation croisée sur les données d'entraînement et de calculer la meilleure valeur de K
- - plotAccuracy : permet de représenter la moyenne des exactitudes obtenues lors de la validation croisée en fonction des valeurs de K. Cette fonction nous a permis d'ajuster la valeur de repeat_kfold
+ - **getBestKppv** : permet de faire une validation croisée sur les données d'entraînement et de calculer la meilleure valeur de K
+ - **plotAccuracy** : permet de représenter la moyenne des exactitudes obtenues lors de la validation croisée en fonction des valeurs de K. Cette fonction nous a permis d'ajuster la valeur de repeat_kfold
 
  ### Classe BayesNaif
 
