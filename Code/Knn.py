@@ -178,4 +178,4 @@ class Knn:
 		filename = 'best_k_graph/best_kppv_search_{}.png'.format(dataset)
 		plt.savefig(filename, bbox_inches='tight')
 		print("\nFigure enregistrée sous {}".format(filename))
-		#plt.show()
+		plt.close()
