@@ -165,14 +165,17 @@ class Knn:
 		print("best_kppv =", best_kppv)
 		self.k = best_kppv
 
-	def plotAccuracy(self):
+	def plotAccuracy(self, dataset):
 		"""
 		C'est la méthode qui permet de représenter la moyenne des exactitudes en fonction des valeurs de K,
 		calculées lors de la recherche du meilleur K par validation croisée
+		dataset : string utilisée pour l'enregistrement
 		"""
 		plt.plot(range(1, self.repeat_kfold +1), self.mean_accuracies)
 		plt.axvline(x=self.k,color='red',linestyle='--')
 		plt.xlabel('K (nombre de plus proches voisins)')
 		plt.ylabel('Moyenne des exactitudes')
-		plt.savefig('best_k_graph/best_kppv_search.png', bbox_inches='tight')
+		filename = 'best_k_graph/best_kppv_search_{}.png'.format(dataset)
+		plt.savefig(filename, bbox_inches='tight')
+		print("\nFigure enregistrée sous {}".format(filename))
 		#plt.show()

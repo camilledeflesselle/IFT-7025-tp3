@@ -52,7 +52,7 @@ for dataset in ["iris", "wine", "abalone"]:
     # --> 3- Entrainement du classifieur
     # 1) Recherche du meilleur k (décommenter si vous souhaitez le calculer)
     #classif_knn.getBestKppv(train, train_labels)
-    #classif_knn.plotAccuracy()
+    #classif_knn.plotAccuracy(dataset)
 
     # 2) Entraînement avec ce K
     tps1 = perf_counter()
@@ -60,7 +60,7 @@ for dataset in ["iris", "wine", "abalone"]:
 
     # --> Evaluation sur les données d'entrainement'
     print("\n######################################\nEvaluation sur les données d'entraînement avec K = {}".format(classif_knn.k))
-    classif_knn.evaluate(train_iris, train_labels_iris)
+    classif_knn.evaluate(train, train_labels)
     # --> 4- Evaluation sur les données de test
     print("\n######################################\nEvaluation sur les données de test avec K = {}".format(classif_knn.k))
     classif_knn.evaluate(test, test_labels)
