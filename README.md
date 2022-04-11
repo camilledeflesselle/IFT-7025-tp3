@@ -33,7 +33,7 @@ Cette classe est le classifieur implémenté dans le fichier *NaiveBayes.py*. Il
  - **separateByClass** : permet de créer un dictionnaire où les clés sont les classes et les valeurs sont les instances de chaque classe, en travaillant sur un jeu d'entraînement (méthode appelée par train)
  - **meanAndStd**  : calcule la moyenne et l'écart type de chaque attribut par classe
  - **gaussProbability** : méthode qui calcule la densité de probabilité d'une distribution normale
- - **calculateClassProbabilities** : calcule la probabilité de chaque classe pour une instance en faisant appel à gaussProbability sur chaque attribut
+ - **calculateClassProbabilities** : calcule la probabilité de chaque classe pour une instance en faisant le produit des résultats de gaussProbability de chaque attribut, en utilisant la moyenne et l'écart-type de la classe
 
 ## Répartition des tâches de travail entre les membres d’équipe
 Pour faciliter notre collaboration, nous avons créé un dépôt git privé, sur lequel se trouve tout notre travail.
@@ -42,7 +42,7 @@ Pour ce projet, l'un des membres de l'équipe a implémenté la classe KNN et l'
 Quant aux fonctions dédiées au chargement des datasets, nous les avons écrit ensemble.
 
 De même, nous avons implémenté une boucle d'entraînement/test (fichier *entrainer_tester.py*) en utilisant ces deux classes sur les trois jeux de données étudiés en travaillant ensemble sur le fichier. Ce fichier nous a permis de connaître les temps d'exécution des différents classifieurs (temps d'entraînement + évaluation sur les données test).
-
+Dans la version actuelle de ce fichier, la recherche du meilleur k n'est pas faite. Pour la faire, il suffit de décommenter la ligne 54. Pour visualiser graphiquement cette recherche, il faut décommenter la ligne 55.
 Par ailleurs, nous avions au préalable implémenté le fichier *metrics.py* qui nous permet d'afficher les différentes métriques de performances, que nous utilisons dans nos classes lors de l'évaluation.
 
 ## Explication des difficultés rencontrées dans ce travail

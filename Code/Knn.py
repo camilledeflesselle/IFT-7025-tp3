@@ -3,15 +3,20 @@ Nous définissons une classe pour l'algorithme des k plus proches voisins, avec 
 	* train 	: pour entrainer le modèle sur l'ensemble d'entrainement.
 	* predict 	: pour prédire la classe d'un exemple donné.
 	* evaluate 		: pour evaluer le classifieur avec les métriques demandées. 
-vous pouvez rajouter d'autres méthodes qui peuvent vous etre utiles, mais la correction
-se fera en utilisant les méthodes train, predict et evaluate de votre code.
+	* euclideanDistance : permet de calculer la distance euclidienne entre deux instances
+    * getNeighbors : permet de renvoyer un nombre K des classes des plus proches voisins d'une instance
+    * getBestKppv : permet de faire une validation croisée sur les données d'entraînement et de calculer 
+	la meilleure valeur de K
+    * plotAccuracy : permet de représenter la moyenne des exactitudes obtenues lors de la validation croisée 
+	en fonction des valeurs de K. Cette fonction nous a permis d'ajuster la valeur de repeat_kfold
 """
 
 import numpy as np
 import math
-import metrics
+import metrics # évaluation des performances
 import matplotlib.pyplot as plt
 import operator 
+
 # Knn pour le modèle des k plus proches voisins
 
 class Knn:
@@ -21,6 +26,7 @@ class Knn:
 		C'est un Initializer avec
 		repeat_kfold : entier servant à la boucle de validation croisée
 		L : entier qui permet de diviser les données en L échantillons lors de la validation croisée
+		k : entier qui correspond à la valeur du nombre de voisins si on ne cherche pas le meilleur K
 		"""
 		self.L = L
 		self.repeat_kfold = repeat_kfold
@@ -46,10 +52,10 @@ class Knn:
 		n : le nombre d'exemple d'entrainement dans le dataset
 		m : le mobre d'attribus (le nombre de caractéristiques)
 		
+		train_labels : est une matrice numpy de taille nx1
+
 		test_row est une matrice de type Numpy et de taille 1xm, avec 
 		m : le nombre d'attribus (le nombre de caractéristiques)
-
-		k est un entier, le nombre de voisins retenus
 		"""
 		distances = list()
 
@@ -68,18 +74,12 @@ class Knn:
 		
 	def train(self, train, train_labels): #vous pouvez rajouter d'autres attributs au besoin
 		"""
-		C'est la méthode qui va entrainer votre modèle,
+		C'est la méthode qui va entrainer le modèle,
 		train est une matrice de type Numpy et de taille nxm, avec 
 		n : le nombre d'exemple d'entrainement dans le dataset
 		m : le mobre d'attribus (le nombre de caractéristiques)
 		
 		train_labels : est une matrice numpy de taille nx1
-
-		test est une matrice de type Numpy et de taille nxm, avec 
-		n : le nombre d'exemple de test dans le dataset
-		m : le nombre d'attribus (le nombre de caractéristiques)
-		
-		k est un entier correpondant à la valeur de k utilisée
 		"""
 		self.train_data = train
 		self.train_labels = train_labels
@@ -102,15 +102,12 @@ class Knn:
 
 	def evaluate(self, X, y):
 		"""
-		c'est la méthode qui va evaluer votre modèle sur les données X
+		C'est la méthode qui va evaluer le modèle sur les données X
 		l'argument X est une matrice de type Numpy et de taille nxm, avec 
-		n : le nombre d'exemple de test dans le dataset
-		m : le mobre d'attribus (le nombre de caractéristiques)
+		n : le nombre d'exemples de test dans le dataset
+		m : le nombre d'attributs (le nombre de caractéristiques)
 		
 		y : est une matrice numpy de taille nx1
-		
-		vous pouvez rajouter d'autres arguments, il suffit juste de
-		les expliquer en commentaire
 		"""
 		y_pred = np.array([self.predict(x) for x in X])
 		metrics.show_metrics(y, y_pred)
@@ -127,6 +124,12 @@ class Knn:
 				c) Nous calculons l'exactitude entre les vrais labels et la prédiction.
 			2-2) Nous calculons ensuite la moyenne des exactitudes.
 		3) Nous choisissons la valeur de K qui maximise la moyenne des exactitudes
+
+		train est une matrice de type Numpy et de taille nxm, avec 
+		n : le nombre d'exemple de test dans le dataset
+		m : le mobre d'attribus (le nombre de caractéristiques)
+		
+		train_labels : est une matrice numpy de taille nx1
 		"""
 		best_kppv = 0
 		max_mean_accuracy = 0
@@ -163,6 +166,10 @@ class Knn:
 		self.k = best_kppv
 
 	def plotAccuracy(self):
+		"""
+		C'est la méthode qui permet de représenter la moyenne des exactitudes en fonction des valeurs de K,
+		calculées lors de la recherche du meilleur K par validation croisée
+		"""
 		plt.plot(range(1, self.repeat_kfold +1), self.mean_accuracies)
 		plt.axvline(x=self.k,color='red',linestyle='--')
 		plt.xlabel('K (nombre de plus proches voisins)')

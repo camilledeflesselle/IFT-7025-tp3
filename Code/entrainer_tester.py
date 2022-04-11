@@ -53,13 +53,14 @@ for dataset in ["iris", "wine", "abalone"]:
     # 1) Recherche du meilleur k (décommenter si vous souhaitez le calculer)
     #classif_knn.getBestKppv(train, train_labels)
     #classif_knn.plotAccuracy()
+
     # 2) Entraînement avec ce K
     tps1 = perf_counter()
     classif_knn.train(train, train_labels)
 
     # --> Evaluation sur les données d'entrainement'
-    #print("\n######################################\nEvaluation sur les données d'entraînement avec K = {}".format(classif_knn.k))
-    #classif_knn.evaluate(train_iris, train_labels_iris)
+    print("\n######################################\nEvaluation sur les données d'entraînement avec K = {}".format(classif_knn.k))
+    classif_knn.evaluate(train_iris, train_labels_iris)
     # --> 4- Evaluation sur les données de test
     print("\n######################################\nEvaluation sur les données de test avec K = {}".format(classif_knn.k))
     classif_knn.evaluate(test, test_labels)
@@ -84,8 +85,8 @@ for dataset in ["iris", "wine", "abalone"]:
     classif_NaiveBayes.train(train, train_labels)
 
     # --> Evaluation sur les données d'entraînement
-    #print("\n######################################\nEvaluation sur les données d'entraînement")
-    #classif_NaiveBayes.evaluate(train, train_labels)
+    print("\n######################################\nEvaluation sur les données d'entraînement")
+    classif_NaiveBayes.evaluate(train, train_labels)
 
     # --> Evaluation sur les données de test
     print("\n######################################\nEvaluation sur les données de test")
