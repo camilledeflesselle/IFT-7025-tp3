@@ -174,5 +174,5 @@ class Knn:
 		plt.axvline(x=self.k,color='red',linestyle='--')
 		plt.xlabel('K (nombre de plus proches voisins)')
 		plt.ylabel('Moyenne des exactitudes')
-		plt.savefig('best_kppv_search.png', bbox_inches='tight')
+		plt.savefig('best_k_graph/best_kppv_search.png', bbox_inches='tight')
 		#plt.show()
