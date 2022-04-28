@@ -32,14 +32,28 @@ def exactitude(vn, fp, fn, vp):
     return (vn + vp)/(vn + fp + fn + vp)
 
 def show_metrics(true_labels, predicted_labels):
+    acc, prec, rap, score = [],[],[],[]
     for i in np.unique(true_labels):
         print("\nClasse positive :", i)
         conf = confusion_matrix_binary(true_labels, predicted_labels, i, True)
         vp, fn = conf[0]
         fp, vn = conf[1]
-        print("  * Exactitude =", exactitude(vn, fp, fn, vp))
+        ex = exactitude(vn, fp, fn, vp)
         p = precision(fp, vp)
         r = rappel(fn, vp)
+        sc = F1_score(p, r)
+        acc.append(ex)
+        prec.append(p)
+        rap.append(r)
+        score.append(sc)
+        print("  * Exactitude =", ex)
         print("  * Précision =", p)
         print("  * Rappel =", r)
-        print("  * F1-score =", F1_score(p, r))
+        print("  * F1-score =", sc)
+
+    # en moyenne
+    print("\nEn moyenne :")
+    print("  * Exactitude =", np.mean(acc))
+    print("  * Précision =", np.mean(prec))
+    print("  * Rappel =", np.mean(rap))
+    print("  * F1-score =", np.mean(score))
